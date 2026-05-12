@@ -1,20 +1,33 @@
-Task 1.1: Python-Based Repository Identification
+# Task 1.1: Python-Based Repository Identification
+
 The following table provides an analysis of the five selected repositories. Among them, four repositories are mainly developed using Python, while one repository follows a multi-language (polyglot) architecture.
-| Repository                | Strictly Python?    | Main Purpose / Functionality                                                                    | Key Dependencies                               | Architecture Patterns                                                | Target Domain / Use Case                                          |
-| ------------------------- | ------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| aio-libs/aiokafka         | Yes                 | Asynchronous Apache Kafka client designed for high-performance producer and consumer operations | asyncio, kafka-protocol, cython                | Async/await, Producer-Consumer, Connection Pooling, Protocol Framing | Stream processing, event-driven systems, real-time data pipelines |
-| airbytehq/airbyte         | No (Java/TS/Python) | Data integration platform supporting hundreds of source and destination connectors              | Java, Python, TypeScript, Docker               | ETL/ELT Pipelines, Microservices, Plugin-based Connectors            | Data engineering and enterprise-scale data ingestion              |
-| artefactual/archivematica | Yes                 | Digital preservation platform used to automate archival storage and packaging workflows         | Django, Celery, Elasticsearch, Gearman, ClamAV | Workflow Pipelines, MVC, Microservices, BagIt Packaging              | Digital archives, museums, and library preservation systems       |
-| beetbox/beets             | Yes                 | Command-line music library manager for organizing and tagging media collections                 | Python, SQLite, mutagen, Flask                 | Plugin-based Architecture, Command Pattern, Repository Pattern       | Personal music management and media archiving                     |
-| FoundationAgents/MetaGPT  | Yes                 | Multi-agent framework that coordinates LLM-based software engineering roles                     | Python, OpenAI APIs, typer, rich, Pydantic     | Multi-Agent Systems, Workflow Orchestration, Role-based Execution    | AI automation and autonomous software development                 |
-Architectural Notes on Python Repositories
-aio-libs/aiokafka
+
+| Repository | Strictly Python? | Main Purpose / Functionality | Key Dependencies | Architecture Patterns | Target Domain / Use Case |
+|------------|------------------|------------------------------|------------------|----------------------|--------------------------|
+| aio-libs/aiokafka | Yes | Asynchronous Apache Kafka client designed for high-performance producer and consumer operations | asyncio, kafka-protocol, cython | Async/await, Producer-Consumer, Connection Pooling, Protocol Framing | Stream processing, event-driven systems, real-time data pipelines |
+| airbytehq/airbyte | No (Java/TS/Python) | Data integration platform supporting hundreds of source and destination connectors | Java, Python, TypeScript, Docker | ETL/ELT Pipelines, Microservices, Plugin-based Connectors | Data engineering and enterprise-scale data ingestion |
+| artefactual/archivematica | Yes | Digital preservation platform used to automate archival storage and packaging workflows | Django, Celery, Elasticsearch, Gearman, ClamAV | Workflow Pipelines, MVC, Microservices, BagIt Packaging | Digital archives, museums, and library preservation systems |
+| beetbox/beets | Yes | Command-line music library manager for organizing and tagging media collections | Python, SQLite, mutagen, Flask | Plugin-based Architecture, Command Pattern, Repository Pattern | Personal music management and media archiving |
+| FoundationAgents/MetaGPT | Yes | Multi-agent framework that coordinates LLM-based software engineering roles | Python, OpenAI APIs, typer, rich, Pydantic | Multi-Agent Systems, Workflow Orchestration, Role-based Execution | AI automation and autonomous software development |
+
+## Architectural Notes on Python Repositories
+
+### aio-libs/aiokafka
+
 This repository is fully based on Python’s asyncio framework. It implements the Kafka communication protocol mainly in Python while optionally supporting C extensions for better performance. The architecture is centered around asynchronous event loops to reduce blocking I/O operations. Much of the system complexity comes from handling protocol state management and maintaining cluster metadata efficiently.
-artefactual/archivematica
+
+### artefactual/archivematica
+
 Archivematica follows a Django-based architecture that is divided into multiple services such as the Dashboard, Storage Service, and MCP Server. Long-running background operations are handled using Celery and Gearman. The system is designed as a workflow pipeline where digital objects pass through stages like format validation, metadata extraction, virus scanning, and archival packaging.
-beetbox/beets
+
+### beetbox/beets
+
 Beets is a lightweight Python application focused on single-user music library management. It uses SQLite for storing metadata and provides a strong plugin ecosystem for extending functionality. The project also includes a template-based path generation system for organizing files. Its overall design emphasizes flexibility, extensibility, and safe non-destructive file management.
-FoundationAgents/MetaGPT
+
+### FoundationAgents/MetaGPT
+
 MetaGPT uses structured outputs with Pydantic models to coordinate multiple AI agents such as Product Managers, Architects, and Engineers. The framework dynamically creates and manages agent roles using Python classes and message-passing mechanisms. Its architecture mainly focuses on workflow orchestration and collaborative multi-agent task execution for software development automation.
-Conclusion
+
+## Conclusion
+
 Overall, these repositories represent different architectural styles within the Python ecosystem, including asynchronous distributed systems, workflow-driven preservation platforms, plugin-oriented applications, and AI-based multi-agent orchestration frameworks. This variety makes them suitable for studying multiple software engineering and system design approaches.
